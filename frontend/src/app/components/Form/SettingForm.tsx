@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-import Tabs from '../Tabs/Tabs';
+import Tabs from '../Tabs/Tab';
 
 export const SettingForm: React.FC = () => {
   const methods = useForm();
