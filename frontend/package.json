@@ -55,9 +55,9 @@
   },
   "lint-staged": {
     "src/**/*.{js,ts,tsx}": [
-      "yarn run lint:fix",
-      "yarn run format:write",
-      "yarn run auto-create-storybook"
+      "pnpm run lint:fix",
+      "pnpm run format:write",
+      "pnpm run auto-create-storybook"
     ]
   }
 }
