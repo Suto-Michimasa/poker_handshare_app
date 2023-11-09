@@ -11,6 +11,7 @@ const Tabs: React.FC<TabsProps> = ({ name, options }) => {
   const { control } = useFormContext();
   const [activeTab, setActiveTab] = useState<string>(options[0]);
 
+
   return (
     <main className="max-w-screen-sm mx-auto p-8 flex flex-col items-center">
       <div className="flex w-full relative">

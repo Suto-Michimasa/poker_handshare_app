@@ -6,6 +6,7 @@ import Tabs from '../Tabs/Tabs';
 export const SettingForm: React.FC = () => {
   const methods = useForm();
 
+
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit((data) => console.log(data))}>
