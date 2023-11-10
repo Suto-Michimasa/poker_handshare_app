@@ -117,45 +117,6 @@ const createStoryFiles = (dir: string) => {
       const typeName = typeAliasesTypeNames[0]
       const typeContent = typeAliasesTypeTexts.join('\n')
 
-      const imports = sourceFile.getImportDeclarations()
-      const importTypeTexts: string[] = []
-      const mantineCoreImportNames: string[] = []
-      const mantineTargetTypes = ['Sx', 'MantineSize']
-
-      imports.forEach(
-        (imp: {
-          getModuleSpecifierValue: any
-          getText: any
-          getNamedImports: any
-        }) => {
-          const importModule = imp.getModuleSpecifierValue()
-
-          if (
-            (typeContent && importModule.includes('@/types')) ||
-            importModule === '@mantine/form/lib/types'
-          ) {
-            importTypeTexts.push(imp.getText())
-          }
-          if (importModule === '@mantine/core') {
-            const namedImports = imp.getNamedImports()
-            const importNames = namedImports.map(
-              (namedImport: { getName: any }) => namedImport.getName(),
-            )
-            const filteredImportNames = importNames.filter((name: string) =>
-              mantineTargetTypes.includes(name),
-            )
-            mantineCoreImportNames.push(...filteredImportNames)
-          }
-        },
-      )
-
-      const importTypePath = importTypeTexts.join('\n')
-      const importMantineCore =
-        mantineCoreImportNames.length > 0
-          ? `import { ${mantineCoreImportNames.join(
-              ', ',
-            )} } from '@mantine/core';`
-          : ''
 
       const argsBlock = typeName
         ? `args:
@@ -172,9 +133,6 @@ const createStoryFiles = (dir: string) => {
       const content = `
   import { Meta, StoryObj } from '@storybook/react';
   import ${componentName} from './${importPath}';
-  ${importTypePath}
-  ${importMantineCore}
-
   ${typeContent}
 
   export default {
