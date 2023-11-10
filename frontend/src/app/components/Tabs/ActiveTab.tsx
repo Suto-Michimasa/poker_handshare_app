@@ -1,21 +1,28 @@
-'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
-interface TabsProps {
+type TabsProps = {
   title: string;
   name: string;
   options: string[];
-}
+  activeTab: string; // 外部からアクティブなタブを制御するためのprop
+  onTabChange: (newActiveTab: string) => void; // タブが変更されたときに呼び出される関数
+};
 
-const Tabs: React.FC<TabsProps> = ({ title, name, options }) => {
+const ActiveTabs: React.FC<TabsProps> = ({ title, name, options, activeTab, onTabChange }) => {
   const { control } = useFormContext();
-  const [activeTab, setActiveTab] = useState<string>(options[0]);
+
+  useEffect(() => {
+    // optionsが更新されたときに、activeTabも更新する
+    if (!options.includes(activeTab)) {
+      onTabChange(options[0]);
+    }
+  }, [options, activeTab, onTabChange]);
 
   return (
     <main>
       <p className="text-white text-center text-2xl font-medium mt-12">{title}</p>
-      <div className="max-w-screen-sm mx-auto p-8 flex flex-col items-center">
+      <div className="max-w-screen-lg mx-auto p-8 flex flex-col items-center">
         <div className="flex w-full relative">
           {options.map((option, index) => (
             <React.Fragment key={option}>
@@ -29,7 +36,8 @@ const Tabs: React.FC<TabsProps> = ({ title, name, options }) => {
                     id={`${name}${index}`}
                     value={option}
                     className="sr-only"
-                    onChange={() => setActiveTab(option)}
+                    checked={option === activeTab}
+                    onChange={() => onTabChange(option)} // 外部の状態更新関数を呼び出す
                   />
                 )}
               />
@@ -52,4 +60,4 @@ const Tabs: React.FC<TabsProps> = ({ title, name, options }) => {
   );
 };
 
-export default Tabs;
+export default ActiveTabs;
