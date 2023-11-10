@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 type TabsProps = {
   title: string;
   name: string;
   options: string[];
-  activeTab: string; // 外部からアクティブなタブを制御するためのprop
-  onTabChange: (newActiveTab: string) => void; // タブが変更されたときに呼び出される関数
+  activeTab: string;
+  onTabChange: (newActiveTab: string) => void;
 };
 
 const ActiveTabs: React.FC<TabsProps> = ({ title, name, options, activeTab, onTabChange }) => {
@@ -37,7 +37,7 @@ const ActiveTabs: React.FC<TabsProps> = ({ title, name, options, activeTab, onTa
                     value={option}
                     className="sr-only"
                     checked={option === activeTab}
-                    onChange={() => onTabChange(option)} // 外部の状態更新関数を呼び出す
+                    onChange={() => onTabChange(option)}
                   />
                 )}
               />
@@ -45,8 +45,8 @@ const ActiveTabs: React.FC<TabsProps> = ({ title, name, options, activeTab, onTa
                 htmlFor={`${name}${index}`}
                 className={`text-white cursor-pointer flex-grow flex items-center justify-center truncate uppercase select-none font-semibold text-lg rounded-full py-2 mx-1 first:ml-0 last:mr-0
                 ${option === activeTab
-                    ? 'bg-[#0B2447] border-2 border-gray-200' // Active tab styles
-                    : 'hover:bg-[#19376D]' // Non-active tab hover styles
+                    ? 'bg-[#0B2447] border-2 border-gray-200'
+                    : 'hover:bg-[#19376D]'
                   }`}
                 style={{ width: `${100 / options.length}%` }}
               >

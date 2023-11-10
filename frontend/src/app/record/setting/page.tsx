@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image'
 import { staticPath } from '@/lib/$path'
-import { SettingForm } from '@/app/components/Form/SettingForm'
+import { SettingForm } from '@/app/features/record/components/SettingForm'
 
 
 const SettingPage: React.FC = () => {
