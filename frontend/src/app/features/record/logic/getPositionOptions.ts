@@ -16,8 +16,8 @@ export const getPositionOptions = (count: string) => {
     case '8':
       return ['UTG', 'UTG1', 'UTG2', 'HJ', 'CO', 'BTN', 'SB', 'BB'];
     case '9':
-      return ['UTG', 'UTG1', 'UTG2', 'LO', 'HJ', 'CO', 'BTN', 'SB', 'BB'];
+      return ['UTG', 'UTG1', 'UTG2', 'LJ', 'HJ', 'CO', 'BTN', 'SB', 'BB'];
     default:
-      return ['UTG', 'UTG1', 'UTG2', 'LO', 'HJ', 'CO', 'BTN', 'SB', 'BB'];
+      return ['UTG', 'UTG1', 'UTG2', 'LJ', 'HJ', 'CO', 'BTN', 'SB', 'BB'];
   }
 };
