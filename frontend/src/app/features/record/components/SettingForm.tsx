@@ -56,16 +56,16 @@ export const SettingForm: React.FC = () => {
           activeTab={activePosition}
           onTabChange={handlePositionChange}
         />
+        {/* 記録を開始ボタン */}
+        <div className="flex flex-col items-center">
+          <button
+            type="submit"
+            className="bg-[#0B2447] text-sm sm:text-md text-white hover:bg-[#19376D] border-2 border-gray-200 sm:rounded-full rounded-2xl sm:py-2 py-1 px-8 my-8"
+          >
+            記録を開始
+          </button>
+        </div>
       </form>
-      {/* 記録を開始ボタン */}
-      <div className="flex flex-col items-center">
-        <button
-          type="submit"
-          className="bg-[#0B2447] text-sm sm:text-md text-white hover:bg-[#19376D] border-2 border-gray-200 sm:rounded-full rounded-2xl sm:py-2 py-1 px-8 my-8"
-        >
-          記録を開始
-        </button>
-      </div>
     </FormProvider>
   );
 };
