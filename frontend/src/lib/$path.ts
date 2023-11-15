@@ -11,6 +11,9 @@ export const pagesPath = {
     $url: (url?: { hash?: string }) => ({ pathname: '/blog' as const, hash: url?.hash, path: `/blog${buildSuffix(url)}` })
   },
   "record": {
+    "preflop": {
+      $url: (url?: { hash?: string }) => ({ pathname: '/record/preflop' as const, hash: url?.hash, path: `/record/preflop${buildSuffix(url)}` })
+    },
     "setting": {
       $url: (url?: { hash?: string }) => ({ pathname: '/record/setting' as const, hash: url?.hash, path: `/record/setting${buildSuffix(url)}` })
     }

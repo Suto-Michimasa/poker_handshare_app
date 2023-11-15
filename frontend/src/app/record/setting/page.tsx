@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image'
+import Image from 'next/image';
 import { staticPath } from '@/lib/$path'
 import { SettingForm } from '@/app/features/record/components/SettingForm'
 
@@ -10,11 +10,6 @@ const SettingPage: React.FC = () => {
       <div className={`text-white`}>
       </div>
       <SettingForm />
-
-      {/* TODO: レイアウトフォルダに切り分ける */}
-      <div className={`fixed top-0 left-0 w-full h-screen z-[-1]`}>
-        <Image src={staticPath.background_jpg} layout={`fill`} objectFit={`cover`} alt="poker-background" />
-      </div>
     </div>
   );
 }
